@@ -77,7 +77,7 @@ $(document).ready(function () {
 		}
 	});
 
-	function saveStep() {
+	function saveStep (type) {
 		console.log("Saving form data...");
 		var oldData = JSON.parse(localStorage.getItem('form_data')) || {},
 				newData = JSON.parse($("#indiForm").toJSON()),
@@ -94,7 +94,7 @@ $(document).ready(function () {
 
 	loadStep();
 
-	function loadStep() {
+	function loadStep () {
 		if(localStorage['form_data'])	{
 			console.log("Loading form data...");
 			var result = JSON.parse(localStorage['form_data']);

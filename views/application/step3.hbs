@@ -55,26 +55,31 @@
 
 <script>
 $(document).ready(function () {
+	var prevUrl = './step2';
 	var nextUrl = './step4';
-	$('label').on('click', function () {
-		$('label').removeClass('on');
-		$(this).addClass('on');
+	$('label').on('click', function (e) {
+		if ($(this).hasClass('off')) {
+			e.preventDefault();
+		} else {
+			$('label').removeClass('on');
+			$(this).addClass('on');
+		}
 	});
 
 	$('.btn_prev').on('click', function (e) {
 		e.preventDefault();
-		window.history.back();
+		saveStep('prev');
 	});
 
 	$('.btn_save').on('click', function () {
 		if ($('.btn_inputs').is(':checked')) {
-			saveStep();
+			saveStep('next');
 		} else {
 			alert('두번째로 친숙하게 느끼는 향을 선택해 주세요!');
 		}
 	});
 
-	function saveStep() {
+	function saveStep (type) {
 		console.log("Saving form data...");
 		var oldData = JSON.parse(localStorage.getItem('form_data')) || {},
 				newData = JSON.parse($("#indiForm").toJSON()),
@@ -85,17 +90,29 @@ $(document).ready(function () {
 		localStorage.setItem('form_data', JSON.stringify(result));
 
 		setTimeout(function () {
-			$(location).attr('href', nextUrl);
+			if (type == 'next') {
+				window.location.href = nextUrl;
+			} else {
+				window.location.href = prevUrl;
+			}
 		}, 1000);
 	};
 
 	loadStep();
 
-	function loadStep() {
+	function loadStep () {
 		if(localStorage['form_data'])	{
 			console.log("Loading form data...");
 			var result = JSON.parse(localStorage['form_data']);
 			console.log(result);
+			if (result.love_theme_first) {
+				$('.btn_inputs[value=' + result.love_theme_first + ']').prev('label').addClass('off');
+			}
+			if (result.hate_theme) {
+				$.each(result.hate_theme, function (i, val) {
+					$('.btn_inputs[value=' + val + ']').prev('label').addClass('off');
+				});
+			}
 			if (result.love_theme_second) {
 				var val = result.love_theme_second;
 				$('.btn_inputs[value=' + val + ']').attr('checked', true);

@@ -56,6 +56,7 @@
 
 <script>
 $(document).ready(function () {
+	var prevUrl = './step6';
 	var isPass = false;
 	$('select').niceSelect();
 
@@ -69,7 +70,7 @@ $(document).ready(function () {
 
 	$('.btn_prev').on('click', function (e) {
 		e.preventDefault();
-		window.history.back();
+		window.location.href = prevUrl;
 	});
 
 	$('.btn_save').on('click', function () {
@@ -180,7 +181,7 @@ $(document).ready(function () {
 
 	loadStep();
 
-	function loadStep() {
+	function loadStep () {
 		if(localStorage['form_data'])	{
 			console.log("Loading form data...");
 			var result = JSON.parse(localStorage['form_data']);

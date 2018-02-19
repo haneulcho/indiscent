@@ -1665,6 +1665,9 @@
  }
  .ingre-area label {display:block;position:relative;cursor:pointer;margin:0}
  .ingre-area label.on:before {content:'';display:block;position:absolute;width:100%;height:100%;background-color:rgba(255,255,255,0.4);z-index:3}
+ .ingre-area label.off {cursor:default}
+ .ingre-area label.off .overlay {opacity:0.4}
+ .ingre-area label.off:before {content:'';display:block;position:absolute;width:100%;height:100%;background-color:rgba(0,0,0,0.7);z-index:3}
  .ingre-area .ipts {float:none;display:block;width:320px;height:50px;margin:0 auto 12px;padding:10px 15px;color:#333;
   border:1px solid #ddd;background-color:#fff;font-size:15px;line-height:50px;
  transition:all ease .3s}
@@ -1748,6 +1751,26 @@
      -o-transition: all 0.3s ease 0s;
      transition: all 0.3s ease 0s;
  }
+ .ingre-two .grid-item .off .project-title,
+ .ingre-five .grid-item .off .project-title,
+ .ingre-four .grid-item .off .project-title {
+    bottom: 36% !important;
+    opacity: 1;
+    color: #ccc !important;
+ }
+ .ingre-two .grid-item .off .project-title hr.line,
+ .ingre-five .grid-item .off .project-title hr.line,
+ .ingre-four .grid-item .off .project-title hr.line {
+    background: none !important;
+ }
+ .ingre-two .grid-item .off .project-title h4,
+ .ingre-five .grid-item .off .project-title h4,
+ .ingre-four .grid-item .off .project-title h4 {
+    color: #929292;
+ }
+
+ .hover-1 .grid-item .off *::before, .hover-1 .grid-item:hover .off *::before {opacity: 0 !important}
+
  .ingre-two .grid-item:hover .project-title,
  .ingre-five .grid-item:hover .project-title,
  .ingre-four .grid-item:hover .project-title {
@@ -2739,14 +2762,14 @@
      bottom: 110px;
  }
  .four-style2 .grid-item:hover .project-title {
-     bottom: 30%!important;
+     bottom: 30% !important;
  }
  .four-style4 .project-title {
      bottom: 150px;
  }
  .four-style4 .grid-item .on .project-title,
  .four-style4 .grid-item:hover .project-title {
-     bottom: 36%!important;
+     bottom: 36% !important;
  }
  .four-style4 .project-title h4 {
      font-size: 24px;
