@@ -1,0 +1,111 @@
+<!-- Body Contents Start -->
+<div class="main-area light-bg section-padding">
+	<div class="container">
+		<div class="row text-center">
+			<div class="col-xs-12">
+				<div class="section-title">
+					<h1>향의 베이스 선택: 가벼운 향, 무거운 향</h1>
+					<div class="row pt-20">
+						<p>아래에서 향기 베이스 1개를 선택해 주세요.</p>
+					</div>
+					<div class="horizontal-line ptb-20">
+						<div></div>
+					</div>
+
+					<!-- Base Section Start -->
+					<form action="#" method="post" id="indiForm">
+						<div class="ingre-area ingre-five four-style4 light-bg section-padding clearfix">
+							<div class="btn mb-30 btn_save">다음으로</div>
+
+							<div class="container-fluid no-padding">
+								<div class="row">
+									<div class="col-xs-12">
+										<div class="ingre-grid fitRows-grid hover-1">
+
+												<div class="grid-item work3d print percent-50">
+													<label for="love_base1">
+														<div class="single-ingre overlay light-2">
+															<img src="../imgs/base/1_fresh.png" alt="가벼운 향" />
+														</div>
+														<div class="project-title text-center">
+															<h4>가벼운 향</h4>
+														</div>
+													</label>
+													<input id="love_base1" class="btn_inputs" type="radio" name="base" value="fresh" />
+												</div>
+												<div class="grid-item work3d print percent-50">
+													<label for="love_base2">
+														<div class="single-ingre overlay light-2">
+															<img src="../imgs/base/2_rich.png" alt="무거운 향" />
+														</div>
+														<div class="project-title text-center">
+															<h4>무거운 향</h4>
+														</div>
+													</label>
+													<input id="love_base2" class="btn_inputs" type="radio" name="base" value="rich" />
+												</div>
+
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="btn mt-30 btn_save">다음으로</div>
+						</div>
+					</form>
+					<!-- Base Section End -->
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- Body Contents End -->
+
+<script>
+$(document).ready(function () {
+	var nextUrl = './step2';
+	$('label').on('click', function () {
+		$('label').removeClass('on');
+		$(this).addClass('on');
+	});
+
+	$('.btn_save').on('click', function () {
+		if ($('.btn_inputs').is(':checked')) {
+			saveStep();
+		} else {
+			alert('향의 베이스를 선택해 주세요!');
+		}
+	});
+
+	function saveStep() {
+		console.log("Saving form data...");
+		var oldData = JSON.parse(localStorage.getItem('form_data')) || {},
+				newData = JSON.parse($("#indiForm").toJSON()),
+				result = {};
+		result = $.extend({}, oldData, newData);
+
+		console.log(result);
+		localStorage.setItem('form_data', JSON.stringify(result));
+
+		setTimeout(function () {
+			window.location.href = nextUrl;
+		}, 1000);
+	};
+
+	loadStep();
+
+	function loadStep() {
+		if(localStorage['form_data'])	{
+			console.log("Loading form data...");
+			var result = JSON.parse(localStorage['form_data']);
+			console.log(result);
+			if (result.base) {
+				$('.btn_inputs[value=' + result.base + ']').prev('label').addClass('on');
+			}
+		} else {
+			console.log("Error: Save some data first");
+		}
+		return false;
+	};
+});
+</script>

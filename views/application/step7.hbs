@@ -1,0 +1,195 @@
+<!-- Body Contents Start -->
+<div class="main-area light-bg section-padding">
+	<div class="container">
+		<div class="row text-center">
+			<div class="col-xs-12">
+				<div class="section-title">
+					<div id="cont_em">
+						<h1>신청 정보 입력</h1>
+						<div class="row pt-20">
+							<p>연락 받을 정보를 입력해 주세요.</p>
+						</div>
+						<div class="horizontal-line ptb-20">
+							<div></div>
+						</div>
+					</div>
+					<!-- Ingredient Section Start -->
+					<form action="/" method="post" id="indiForm">
+						<div class="ingre-area ingre-five four-style4 light-bg section-padding clearfix">
+							<div class="btn mb-30 btn_prev">이전</div>
+
+							<div class="container-fluid no-padding">
+								<div class="row">
+									<div class="col-xs-12">
+										<div id="cont">
+											<div class="row pt-20">
+												<input type="text" id="ipt_name" class="ipts" name="name" placeholder="이름" maxlength="6" required>
+											</div>
+											<div class="row pt-20">
+												<input type="text" id="ipt_hp" class="ipts" name="hp" placeholder="휴대폰 번호" maxlength="11" required>
+											</div>
+											<div class="row pt-20">
+												<select id="ipt_address" class="ipts ipt_select" name="address" title="지역 선택">
+													<option value="서울">서울 길음동</option>
+													<option value="서울">서울 삼선동</option>
+												</select>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<div id="cont_emb" class="btn mt-30 btn_save">신청하기</div>
+							</div>
+						</div>
+					</form>
+					<!-- Ingredient Section End -->
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- Body Contents End -->
+
+<!-- jQuery Nice-Select Plugin -->
+<link rel="stylesheet" href="/css/vendor/nice-select.css" />
+<script src="/js/vendor/jquery.nice-select.min.js"></script>
+
+<script>
+$(document).ready(function () {
+	var isPass = false;
+	$('select').niceSelect();
+
+	$('input:checkbox').on('change', function (e) {
+	  if($('.btn_inputs:checked').length > checkLimit) {
+			alert('최대 1개까지 선택 가능합니다!');
+	  	this.checked = false;
+			$(this).prev('label').removeClass('on');
+	  }
+	});
+
+	$('.btn_prev').on('click', function (e) {
+		e.preventDefault();
+		window.history.back();
+	});
+
+	$('.btn_save').on('click', function () {
+		$('#indiForm').submit();
+	});
+
+	$.validator.addMethod('phone', function (phone_number, element) {
+		phone_number = phone_number.replace(/\s+/g, "");
+		return this.optional(element) || phone_number.length > 9 &&
+			phone_number.match(/^(01[016789]{1}|02|0[3-9]{1}[0-9]{1})-?[0-9]{3,4}-?[0-9]{4}$/);
+	}, "유효한 연락처를 입력해 주세요.");
+
+	$('#indiForm').validate({
+		focusInvalid: false,
+		onclick: false,
+		onfocusout: false,
+		onkeyup: false,
+		rules: {
+			name: { required: true, minlength: 2},
+			hp: { required: true, minlength: 9, phone: true},
+			address: { required: true }
+		},
+		messages: {
+			name: {
+				required: "이름을 입력하세요.",
+				minlength: $.validator.format("이름은 2자 이상 입력해 주세요.")
+			},
+			hp: {
+				required: "연락처를 입력하세요.",
+				minlength: "연락처는 9자 이상 숫자로 입력해 주세요.",
+				phone: "유효한 번호를 입력해 주세요."
+			},
+			address: {
+				required: "지역을 선택하세요."
+			}
+		},
+		errorPlacement: function () {
+		},
+		highlight: function (element) {
+			$(element).text('').addClass('error');
+		},
+		submitHandler: function (form) {
+			// form.submit();
+			saveStep(form);
+		},
+		invalidHandler: function (form, validator) {
+			var errors = validator.numberOfInvalids();
+			if (errors) {
+				alert(validator.errorList[0].message);
+				validator.errorList[0].element.focus();
+			}
+		}
+	});
+
+	function saveStep(indiForm) {
+		if (!isPass) {
+			isPass = true;
+			var oldData = JSON.parse(localStorage.getItem('form_data')) || {},
+					newData = {
+						name: $('#ipt_name').val(),
+						hp: $('#ipt_hp').val(),
+						address: $('#ipt_address').val()
+					},
+					resultData = {};
+			resultData = $.extend({}, oldData, newData);
+
+			localStorage.setItem('form_data', JSON.stringify(resultData));
+
+			$.ajax({
+				url: './complete',
+				type: 'POST',
+				data: resultData,
+				dataType: 'json',
+				contentType: "application/x-www-form-urlencoded; charset=utf-8",
+				success: function (data) {
+					if (data.result != 0) {
+						console.log('통과');
+						var str = '';
+						str += '<div class="section-title">';
+						str += '	<h2>신청이 완료되었습니다.</h2>';
+						str += '	<div class="horizontal-line ptb-20"><div></div></div><h5>빠른 시간내로 연락드리겠습니다.<br><br>3초 후 메인으로 이동합니다.</h5>';
+						str += '</div>';
+
+						$('#cont_em, #cont_emb').remove();
+						$('#cont').html(str);
+
+						setTimeout(function () {
+							$(location).attr('href', '/');
+							localStorage.clear();
+						}, 3000);
+					} else {
+						alert('에러가 발생했습니다.\n잠시 후 다시 시도해 주세요.');
+						isPass = false;
+						return false;
+					}
+				},
+				error: function (jqXHR, textStatus, errorThrown) {
+					alert('에러가 발생했습니다.\n잠시 후 다시 시도해 주세요.');
+					isPass = false;
+					return false;
+				}
+			});
+
+		} else {
+			return false;
+		}
+	};
+
+	loadStep();
+
+	function loadStep() {
+		if(localStorage['form_data'])	{
+			console.log("Loading form data...");
+			var result = JSON.parse(localStorage['form_data']);
+			console.log(result);
+		} else {
+			alert('정상적인 경로로 접근해 주세요!');
+			$(location).attr('href', './step1');
+		}
+		return false;
+	};
+});
+</script>

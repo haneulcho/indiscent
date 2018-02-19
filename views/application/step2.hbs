@@ -1,0 +1,115 @@
+<!-- Body Contents Start -->
+<div class="main-area light-bg section-padding">
+	<div class="container">
+		<div class="row text-center">
+			<div class="col-xs-12">
+				<div class="section-title">
+					<h1>향기 테마 선택 1</h1>
+					<div class="row pt-20">
+						<p>가장 좋아하는 향은 어떤 것인가요?</p>
+					</div>
+					<div class="horizontal-line ptb-20">
+						<div></div>
+					</div>
+					<!-- Theme Section Start -->
+					<form action="#" method="post" id="indiForm">
+						<div class="ingre-area ingre-five four-style4 light-bg section-padding clearfix">
+							<div class="btn mb-30 btn_prev">이전</div>
+							<div class="btn mb-30 btn_save">다음으로</div>
+
+							<div class="container-fluid no-padding">
+								<div class="row">
+									<div class="col-xs-12">
+										<div class="ingre-grid fitRows-grid hover-1">
+											{{# each themes }}
+												<div class="grid-item work3d print percent-25">
+													<label for="{{ name }}">
+														<div class="single-ingre overlay light-2">
+															<img src="{{ imagePath }}" alt="{{ name }}" />
+														</div>
+														<div class="project-title text-center">
+															<h4 class="mb-15">{{ name }}</h4>
+															<hr class="line"/>
+															<p class="mb-20"></p>
+														</div>
+													</label>
+													<input id="{{ name }}" class="btn_inputs" type="radio" name="love_theme_first" value="{{ name }}" />
+												</div>
+											{{/each}}
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="btn mt-30 btn_prev">이전</div>
+							<div class="btn mt-30 btn_save">다음으로</div>
+						</div>
+					</form>
+					<!-- Theme Section End -->
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- Body Contents End -->
+
+<script>
+$(document).ready(function () {
+	var nextUrl = './step3';
+	$('label').on('click', function () {
+		$('label').removeClass('on');
+		$(this).addClass('on');
+	});
+
+	$('.btn_prev').on('click', function (e) {
+		e.preventDefault();
+		window.history.back();
+	});
+
+	$('.btn_save').on('click', function () {
+		if ($('.btn_inputs').is(':checked')) {
+			saveStep();
+		} else {
+			alert('가장 좋아하는 향을 선택해 주세요!');
+		}
+	});
+
+	function saveStep() {
+		console.log("Saving form data...");
+		var oldData = JSON.parse(localStorage.getItem('form_data')) || {},
+				newData = JSON.parse($("#indiForm").toJSON()),
+				result = {};
+		result = $.extend({}, oldData, newData);
+
+		console.log(result);
+		localStorage.setItem('form_data', JSON.stringify(result));
+
+		setTimeout(function () {
+			$(location).attr('href', nextUrl);
+		}, 1000);
+	};
+
+	loadStep();
+
+	function loadStep() {
+		if(localStorage['form_data'])	{
+			console.log("Loading form data...");
+			var result = JSON.parse(localStorage['form_data']);
+			console.log(result);
+			if (result.love_theme_first) {
+				var val = result.love_theme_first;
+				$('.btn_inputs[value=' + val + ']').attr('checked', true);
+				$('.btn_inputs[value=' + val + ']').prev('label').addClass('on');
+			} else {
+				setTimeout(function () {
+					$('input[type=radio]').attr('checked', false);
+				}, 300);
+			}
+		} else {
+			alert('정상적인 경로로 접근해 주세요!');
+			$(location).attr('href', './step1');
+		}
+		return false;
+	};
+});
+</script>
