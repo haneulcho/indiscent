@@ -100,7 +100,13 @@ $(document).ready(function () {
 			var result = JSON.parse(localStorage['form_data']);
 			console.log(result);
 			if (result.base) {
-				$('.btn_inputs[value=' + result.base + ']').prev('label').addClass('on');
+				var val = result.base;
+				$('.btn_inputs[value=' + val + ']').attr('checked', true);
+				$('.btn_inputs[value=' + val + ']').prev('label').addClass('on');
+			} else {
+				setTimeout(function () {
+					$('input[type=radio]').attr('checked', false);
+				}, 300);
 			}
 		} else {
 			console.log("Error: Save some data first");

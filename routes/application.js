@@ -110,7 +110,9 @@ router.post('/complete', function (req, res) {
       mailOptions.html += '베이스 향: ' + req.body.base + '<br>';
       mailOptions.html += '가장 좋아하는 향(테마): ' + req.body.love_theme_first + '<br>';
       mailOptions.html += '두번째 친숙하게 느끼는 향(테마): ' + req.body.love_theme_second + '<br>';
-      mailOptions.html += '싫어하는 향(테마): ' + req.body.hate_theme + '<br><br>';
+      if (req.body.hate_theme) {
+        mailOptions.html += '비선호, 싫어하는 향(테마): ' + req.body.hate_theme + '<br><br>';
+      }
       mailOptions.html += '향수에 넣고 싶은 원료 3가지: ' + req.body.love_ingre + '<br>';
       if (req.body.hate_ingre) {
         mailOptions.html += '비선호 원료: ' + req.body.hate_ingre + '<br>';
