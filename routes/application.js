@@ -5,7 +5,7 @@ var Theme = require('../models/theme');
 var Ingredient = require('../models/ingredient');
 var nodemailer = require('nodemailer');
 var smtpTransport = require('nodemailer-smtp-transport');
-var config = require('../config/config');
+var config = (process.env.NODE_ENV == 'production') ? require('../config/config') : require('../config/config.dev');
 
 var smtpTransport = nodemailer.createTransport(smtpTransport ({
   service: 'Gmail',
@@ -101,28 +101,32 @@ router.post('/complete', function (req, res) {
     }
     res.json({result: 1});
 
-    mailOptions.subject = '[인디센트 상담 신청] ' + req.body.name + '님'
-    mailOptions.html = '';
-    mailOptions.html += '이름: ' + req.body.name + '<br>';
-    mailOptions.html += '휴대폰: ' + req.body.hp + '<br>';
-    mailOptions.html += '지역: ' + req.body.address + '<br><br>';
-    mailOptions.html += '베이스 향: ' + req.body.base + '<br>';
-    mailOptions.html += '가장 좋아하는 향(테마): ' + req.body.love_theme_first + '<br>';
-    mailOptions.html += '두번째 친숙하게 느끼는 향(테마): ' + req.body.love_theme_second + '<br>';
-    mailOptions.html += '싫어하는 향(테마): ' + req.body.hate_theme + '<br><br>';
-    mailOptions.html += '향수에 넣고 싶은 원료 3가지: ' + req.body.love_ingre + '<br>';
-    if (req.body.hate_ingre) {
-      mailOptions.html += '비선호 원료: ' + req.body.hate_ingre + '<br>';
-    }
-
-    smtpTransport.sendMail(mailOptions, function(error, info) {
-      if (error) {
-        console.log(error);
-      } else {
-        console.log("메시지 전송 완료: " + info.messageId, info.response);
+    if (process.env.NODE_ENV == 'production') {
+      mailOptions.subject = '[인디센트 상담 신청] ' + req.body.name + '님'
+      mailOptions.html = '';
+      mailOptions.html += '이름: ' + req.body.name + '<br>';
+      mailOptions.html += '휴대폰: ' + req.body.hp + '<br>';
+      mailOptions.html += '지역: ' + req.body.address + '<br><br>';
+      mailOptions.html += '베이스 향: ' + req.body.base + '<br>';
+      mailOptions.html += '가장 좋아하는 향(테마): ' + req.body.love_theme_first + '<br>';
+      mailOptions.html += '두번째 친숙하게 느끼는 향(테마): ' + req.body.love_theme_second + '<br>';
+      mailOptions.html += '싫어하는 향(테마): ' + req.body.hate_theme + '<br><br>';
+      mailOptions.html += '향수에 넣고 싶은 원료 3가지: ' + req.body.love_ingre + '<br>';
+      if (req.body.hate_ingre) {
+        mailOptions.html += '비선호 원료: ' + req.body.hate_ingre + '<br>';
       }
-      smtpTransport.close();
-    });
+  
+      smtpTransport.sendMail(mailOptions, function(error, info) {
+        if (error) {
+          console.log(error);
+        } else {
+          console.log("메시지 전송 완료: " + info.messageId, info.response);
+        }
+        smtpTransport.close();
+      });
+    } else {
+      console.log('개발 모드로 이메일 전송을 하지 않습니다.');
+    }
   });
 });
 

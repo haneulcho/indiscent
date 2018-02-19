@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
-// var async = require('async');
+var config = (process.env.NODE_ENV == 'production') ? require('../config/config') : require('../config/config.dev');
 var Schema = mongoose.Schema;
-var defaultImgPath = 'https://indiscent.herokuapp.com/imgs/themes/';
+var defaultImgPath = config.web.url + '/imgs/themes/';
 
 var ThemeSchema = new Schema({
 	no: { type: String, required: true, unique: true },

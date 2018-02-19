@@ -54,4 +54,10 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
+if (process.env.NODE_ENV == 'development') {
+  console.log('개발 모드 접속 완료!');
+} else {
+  console.log('프로덕션 모드 접속 완료!');
+}
+
 module.exports = app;

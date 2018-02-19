@@ -3,9 +3,12 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www",
-    "seed-theme": "node ./seed/theme-seeder",
-    "seed-ingredient": "node ./seed/ingredient-seeder"
+    "start": "set NODE_ENV=production&&node ./bin/www",
+    "dev": "set NODE_ENV=development&&node ./bin/www",
+    "seed-theme": "set NODE_ENV=production&&node ./seed/theme-seeder",
+    "seed-ingredient": "set NODE_ENV=production&&node ./seed/ingredient-seeder",
+    "seed-theme-dev": "set NODE_ENV=development&&node ./seed/theme-seeder",
+    "seed-ingredient-dev": "set NODE_ENV=development&&node ./seed/ingredient-seeder"
   },
   "dependencies": {
     "async": "^2.6.0",
@@ -15,7 +18,7 @@
     "express": "~4.15.5",
     "express-handlebars": "^3.0.0",
     "hbs": "~4.0.1",
-    "mongoose": "^5.0.2",
+    "mongoose": "^5.0.6",
     "morgan": "~1.9.0",
     "nodemailer": "^4.4.2",
     "nodemailer-smtp-transport": "^2.7.4",

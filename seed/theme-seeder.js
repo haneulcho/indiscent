@@ -1,8 +1,15 @@
 var Theme = require('../models/theme');
 var mongoose = require('mongoose');
+var config = (process.env.NODE_ENV == 'production') ? require('../config/config') : require('../config/config.dev');
 require(process.cwd() + '/lib/connection');
 
-var defaultImgPath = 'https://indiscent.herokuapp.com/imgs/themes/';
+var defaultImgPath = config.web.url + '/imgs/themes/';
+
+if (process.env.NODE_ENV == 'production') {
+	console.log('프로덕션 모드 접속 완료!');
+} else {
+	console.log('개발 모드 접속 완료!');
+}
 
 var themes = [
 	new Theme({
