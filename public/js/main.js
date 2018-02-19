@@ -120,39 +120,6 @@
 	});
 
      /*
-     CONTACT FORM SCRIPT
-     ========================================*/
-     var CTSubmit = $('#contact_submit');
-     CTForm.submit(function() {
-         // submit the form
-         if ($(this).valid()) {
-             CTSubmit.button('loading');
-             var action = $(this).attr('action');
-             $.ajax({
-                 url: action,
-                 type: 'POST',
-                 data: {
-                     contactname: $('#contact_name').val(),
-                     contactemail: $('#contact_email').val(),
-                     contactmessage: $('#contact_message').val()
-                 },
-                 success: function() {
-                     CTSubmit.button('reset');
-                     CTSubmit.button('complete');
-                 },
-                 error: function() {
-                     CTSubmit.button('reset');
-                     CTSubmit.button('error');
-                 }
-             });
-             // return false to prevent normal browser submit and page navigation
-         } else {
-             CTSubmit.button('reset')
-         }
-         return false;
-     });
-
-     /*
      SCROLLUP
      ================================ */
      $.scrollUp({
