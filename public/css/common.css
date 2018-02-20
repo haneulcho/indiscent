@@ -7,8 +7,6 @@
 /* css files
 ====================== */
 @import url('vendor/bootstrap.min.css');
-@import url('vendor/material-design-iconic-font.min.css');
-@import url('vendor/venobox.css');
 @import url('vendor/slick.min.css');
 @import url('style.css');
 @import url('responsive.css');

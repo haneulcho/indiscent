@@ -67,34 +67,6 @@
 	 })
 
      /*
-     ISOTOPE ACTIVE
-     ================================ */
-     // isotope menu
-     var ProjMli = $('.ingre-menu li');
-     ProjMli.on('click', function() {
-		 var ProjGrid = $('.ingre-grid');
-         ProjMli.removeClass("active");
-         $(this).addClass("active");
-         var selector = $(this).attr('data-filter');
-         ProjGrid.isotope({
-             filter: selector,
-             animationOptions: {
-                 duration: 750,
-                 easing: 'linear',
-                 queue: false
-             }
-         });
-     });
-
-	/*
-	VENOBOX ACTIVE
-	================================ */
-	var VenBOx = $('.venobox');
-	VenBOx.venobox();
-	var VenBOxv = $('.venoboxvid');
-	VenBOxv.venobox();
-
-     /*
      SLICK CAROUSEL AS NAV
      ===================================*/
      var OneITem = $('.one-item');
@@ -143,13 +115,9 @@
 		button1.hide();
 		}
 
-		var MasCol = $('.ingre-grid');
+		var MasCol = $('.app-grid');
 		MasCol.isotope('layout');
 	});
-	var PoMe_li = $('.ingre-menu li:not(:first-child)');
-	PoMe_li.on('click',function(){
-		button1.hide();
-  });
 
  /*
  WINDOW LOAD FUNCTIONS
@@ -160,7 +128,7 @@
          preeLoad.fadeOut(1000);
 
          // isotope fitRows grid
-         var IsoGriddoload = $('.fitRows-grid');
+         var IsoGriddoload = $('.app-grid');
          IsoGriddoload.isotope({
              itemSelector: '.grid-item',
              // layout mode options

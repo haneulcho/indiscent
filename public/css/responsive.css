@@ -9,15 +9,7 @@
 	  background-position: 40% 50%;
 	  background-size: auto 90%;
 	}
-	.two-style6 .grid-item:hover .project-title,
-	.two-style6 .project-title {
-	  bottom: 41%;
-	}
-	.three-style6 .grid-item:hover .project-title,
-	.three-style6 .project-title {
-	  bottom: 36%;
-	}
-	.four-style4 .grid-item:hover .project-title {
+	.app_body .grid-item:hover .desc {
 	  bottom: 30% !important;
 	}
 }
@@ -34,10 +26,6 @@
 	  background-position: 45% 60%;
 	  background-size: auto 80%;
 	}
-	.ingre-five .grid-item:hover .project-title {
-	  bottom: 25%;
-	}
-	
 	/* Pages */
 	.sidebar {
 	  padding: 40px 20px;
@@ -48,20 +36,7 @@
 	.contact-area .contact-form {
 	  width: 465px;
 	}
-	.two-style6 .grid-item:hover .project-title,
-	.two-style6 .project-title {
-	  bottom: 40%;
-	}
-	.two-style2 .grid-item:hover .project-title,
-	.two-style2 .project-title {
-	  bottom: 35%;
-	}
-	.three-style6 .grid-item:hover .project-title,
-	.three-style6 .project-title {
-	  bottom: 34%;
-	}
-	.four-style4 .grid-item:hover .project-title, 
-	.four-style2 .grid-item:hover .project-title {
+	.app_body .grid-item:hover .desc {
 	  bottom: 25%!important;
 	}
 
@@ -125,9 +100,6 @@
     .is-sticky .mainmenu .navbar-collapse {
 	  top: 57px;
 	}
-	.ingre-five .grid-item:hover .project-title {
-	  bottom: 18%;
-	}
 	/* Pages */
 	.sidebar {
 	  padding: 30px 15px;
@@ -139,35 +111,10 @@
 	.contact-area .pull-right  {
 	  float: none!important;
 	}
-	
-	.two-style6 .grid-item:hover .project-title,
-	.two-style6 .project-title {
-	  bottom: 36%;
-	}
-	.three-style2 .grid-item:hover .project-title,
-	.three-style2 .project-title,
-	.two-style2 .grid-item:hover .project-title,
-	.two-style2 .project-title {
-	  bottom: 30%;
-	}
-	.three-style1 .project-title,
-	.three-style1 .grid-item:hover .project-title {
-	  bottom: 30px;
-	  left: 30px;
-	}
-	.three-style6 .grid-item:hover .project-title,
-	.three-style6 .project-title {
-	  bottom: 28%;
-	}
-	.three-style6 .project-title h4 {
-	  font-size: 25px;
-	}
-	.four-style4 .percent-25 ,
-	.four-style2 .percent-25 ,
-	.four-style1 .percent-25 {
+	.app_body .grid-item{
 	  width: 50%;
 	}
-	.four-style4 .grid-item:hover .project-title {
+	.app_body .grid-item:hover .desc {
 	  bottom: 32% !important;
 	}
 
@@ -188,7 +135,7 @@
         padding: 80px 0;
     }
 	.contact-area .contact-form,
-    .mini-box,
+	  .grid-item,
     .percent-25,
     .percent-33,
     .percent-50 {
@@ -196,10 +143,6 @@
     }
 	.col-xs-12.no-padding{
 		padding: 0 15px;
-	}
-	
-	.ingre-menu ul li {
-	  margin: 10px 17px;
 	}
 	footer .pull-left,
 	footer .pull-right {
@@ -220,16 +163,6 @@
 	.client-say .text {
 	  padding: 30px 15px;
 	  position: relative;
-	}
-	.ingre-five .grid-item:hover .project-title {
-	  bottom: 20%;
-	}
-	.slider-six .ptb-100 {
-	  padding-bottom: 0px;
-	  padding-top: 50px;
-	}
-	.slider-six .slider-text h1 {
-	  font-size: 44px;
 	}
 	/* Pages */
 	.blog-area .container .mb-minus {
@@ -276,20 +209,7 @@
 	.contact-area .info-text > p br{
 		display: none;
 	}
-	
-	.three-style6 .grid-item:hover .project-title,
-	.three-style6 .project-title,
-	.two-style6 .grid-item:hover .project-title,
-	.two-style6 .project-title {
-	  bottom: 34%;
-	}
-	.three-style2 .grid-item:hover .project-title,
-	.three-style2 .project-title,
-	.two-style2 .grid-item:hover .project-title,
-	.two-style2 .project-title {
-	  bottom: 25%;
-	}
-	.four-style4 .grid-item:hover .project-title {
+	.app_body .grid-item:hover .desc {
 	  bottom: 30% !important;
 	}
 	
@@ -308,25 +228,6 @@
 	  background-color: #24201d;
 	  background-position: 40% 60%;
 	  background-size: auto 70%;
-	}
-	.slider-five {
-	  height: 365px;
-	}
-	.two-style2 .grid-item:hover .project-title,
-	.two-style2 .project-title {
-	  bottom: 32%;
-	}
-	.three-style1 .project-title,
-	.three-style1 .grid-item:hover .project-title {
-	  bottom: 30px;
-	  left: 30px;
-	}
-	.three-style6 .grid-item:hover .project-title,
-	.three-style6 .project-title {
-	  bottom: 30%;
-	}
-	.three-style6 .project-title h4 {
-	  font-size: 24px;
 	}
 
 }
