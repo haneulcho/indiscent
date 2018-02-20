@@ -1,54 +1,62 @@
 <!-- Body Contents Start -->
-<div class="main-area light-bg section-padding">
+<div class="main-area section-padding">
 	<div class="container">
 		<div class="row text-center">
 			<div class="col-xs-12">
-				<div class="section-title">
-					<h1>향수 원료 선택</h1>
-					<div class="row pt-20">
+				<div class="app_header">
+					<div class="tit">
+						<h1>향수 원료 선택</h1>
 						<p>당신이 향수에 넣고 싶은 원료 3가지를 선택해 주세요.</p>
 					</div>
-					<div class="horizontal-line ptb-20">
-						<div></div>
+					<!-- //.tit -->
+					<div class="count">
+						<p>선호 원료 선택</p>
+						<p><span id="cnt">0</span> / 3</p>
 					</div>
-					<!-- Ingredient Section Start -->
+					<!-- //.count -->
+					<a href="./step6" class="btn_save">다음단계</a>
+					<div id="indicator">
+						<ul class="inb">
+							<li><a href="./step1">BASE</a></li>
+							<li><a href="./step2">THEME 1</a></li>
+							<li><a href="./step3">THEME 2</a></li>
+							<li><a href="./step4">THEME 3</a></li>
+							<li class="current"><a href="./step5">INGREDIENTS 1</a></li>
+							<li><a href="./step6">INGREDIENTS 2</a></li>
+							<li><a href="./step7">INFORMATION</a></li>
+						</ul>
+					</div>
+					<!-- //.indicator -->
+					<a href="./step4" class="btn_prev">이전</a>
+				</div>
+				<!-- //.app_header -->
+				<div class="app_body">
 					<form action="#" method="post" id="indiForm">
-						<div class="ingre-area ingre-five four-style4 light-bg section-padding clearfix">
-							<div class="btn mb-30 btn_prev">이전</div>
-							<div class="btn mb-30 btn_save">다음으로</div>
-
-							<div class="container-fluid no-padding">
-								<div class="row">
-									<div class="col-xs-12">
-										<div class="ingre-grid fitRows-grid hover-1">
-											{{# each ingredients }}
-												<div class="grid-item work3d print percent-25">
-													<label for="{{ name }}">
-														<div class="single-ingre overlay light-2">
-															<img src="{{ imagePath }}" alt="{{ name }}" />
-														</div>
-														<div class="project-title text-center">
-															<h4 class="mb-15">{{ name }}<h5 class="mb-5">{{ theme }} 계열</h5></h4>
-															<hr class="line"/>
-														</div>
-													</label>
-													<input id="{{ name }}" class="btn_inputs" type="checkbox" name="love_ingre" value="{{ name }}" />
-												</div>
-											{{/each}}
+						<div class="app-grid">
+							{{# each themes }}
+								<div class="grid-item">
+									<label for="{{ name }}">
+										<div class="imgs overlay">
+											<img src="{{ imagePath }}" alt="{{ name }}" />
 										</div>
-									</div>
+										<div class="desc">
+											<h4 class="name">{{ name }}</h4>
+											<hr class="line"/>
+										</div>
+									</label>
+									<input id="{{ name }}" class="btn_inputs" type="checkbox" name="love_ingre" value="{{ name }}" />
 								</div>
-							</div>
-
-							<div class="btn mt-30 btn_prev">이전</div>
-							<div class="btn mt-30 btn_save">다음으로</div>
+							{{/each}}
 						</div>
 					</form>
-					<!-- Ingredient Section End -->
 				</div>
+				<!-- //.app_body -->
 			</div>
+			<!--//.col-xs-12 -->
 		</div>
+		<!--//.row.text-center -->
 	</div>
+	<!--//.container -->
 </div>
 <!-- Body Contents End -->
 
@@ -78,7 +86,8 @@ $(document).ready(function () {
 	  }
 	});
 
-	$('.btn_save').on('click', function () {
+	$('.btn_save').on('click', function (e) {
+		e.preventDefault();
 		if ($('.btn_inputs:checked').length == checkLimit) {
 			saveStep('next');
 		} else {

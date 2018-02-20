@@ -1,52 +1,58 @@
 <!-- Body Contents Start -->
-<div class="main-area light-bg section-padding">
+<div class="main-area section-padding">
 	<div class="container">
 		<div class="row text-center">
 			<div class="col-xs-12">
-				<div class="section-title">
+				<div class="app_header">
 					<div id="cont_em">
-						<h1>신청 정보 입력</h1>
-						<div class="row pt-20">
+						<div class="tit">
+							<h1>신청 정보 입력</h1>
 							<p>연락 받을 정보를 입력해 주세요.</p>
 						</div>
-						<div class="horizontal-line ptb-20">
-							<div></div>
-						</div>
+						<!-- //.tit -->
 					</div>
-					<!-- Ingredient Section Start -->
-					<form action="/" method="post" id="indiForm">
-						<div class="ingre-area ingre-five four-style4 light-bg section-padding clearfix">
-							<div class="btn mb-30 btn_prev">이전</div>
-
-							<div class="container-fluid no-padding">
-								<div class="row">
-									<div class="col-xs-12">
-										<div id="cont">
-											<div class="row pt-20">
-												<input type="text" id="ipt_name" class="ipts" name="name" placeholder="이름" maxlength="6" required>
-											</div>
-											<div class="row pt-20">
-												<input type="text" id="ipt_hp" class="ipts" name="hp" placeholder="휴대폰 번호" maxlength="11" required>
-											</div>
-											<div class="row pt-20">
-												<select id="ipt_address" class="ipts ipt_select" name="address" title="지역 선택">
-													<option value="서울">서울 길음동</option>
-													<option value="서울">서울 삼선동</option>
-												</select>
-											</div>
-										</div>
-									</div>
-								</div>
-
-								<div id="cont_emb" class="btn mt-30 btn_save">신청하기</div>
+					<div id="indicator">
+						<ul class="inb">
+							<li><a href="./step1">BASE</a></li>
+							<li><a href="./step2">THEME 1</a></li>
+							<li><a href="./step3">THEME 2</a></li>
+							<li><a href="./step4">THEME 3</a></li>
+							<li><a href="./step5">INGREDIENTS 1</a></li>
+							<li><a href="./step6">INGREDIENTS 2</a></li>
+							<li class="current"><a href="./step7">INFORMATION</a></li>
+						</ul>
+					</div>
+					<!-- //.indicator -->
+					<a href="./step6" class="btn_prev">이전</a>
+				</div>
+				<!-- //.app_header -->
+				<div class="app_body">
+					<form action="#" method="post" id="indiForm">
+						<div id="cont">
+							<div class="row pt-20">
+								<input type="text" id="ipt_name" class="ipts" name="name" placeholder="이름" maxlength="6" required>
+							</div>
+							<div class="row pt-20">
+								<input type="text" id="ipt_hp" class="ipts" name="hp" placeholder="휴대폰 번호" maxlength="11" required>
+							</div>
+							<div class="row pt-20">
+								<select id="ipt_address" class="ipts ipt_select" name="address" title="지역 선택">
+									<option value="서울">서울 길음동</option>
+									<option value="서울">서울 삼선동</option>
+								</select>
 							</div>
 						</div>
+						<!--//#cont -->
+						<div id="cont_emb" class="btn_save">신청하기</div>
 					</form>
-					<!-- Ingredient Section End -->
 				</div>
+				<!-- //.app_body -->
 			</div>
+			<!--//.col-xs-12 -->
 		</div>
+		<!--//.row.text-center -->
 	</div>
+	<!--//.container -->
 </div>
 <!-- Body Contents End -->
 
@@ -68,12 +74,7 @@ $(document).ready(function () {
 	  }
 	});
 
-	$('.btn_prev').on('click', function (e) {
-		e.preventDefault();
-		window.location.href = prevUrl;
-	});
-
-	$('.btn_save').on('click', function () {
+	$('.btn_save').on('click', function (e) {
 		$('#indiForm').submit();
 	});
 
