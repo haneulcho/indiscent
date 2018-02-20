@@ -6,4 +6,8 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Indiscent :: Find Your True Color' });
 });
 
+router.get('/about', function(req, res, next) {
+  res.render('about', { title: 'Indiscent :: About Indiscent' });
+});
+
 module.exports = router;
