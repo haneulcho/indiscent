@@ -111,13 +111,6 @@
 		 autoplay: true,
 		 autoplaySpeed: 4000
 	});
-	/*
-	 CounterUp ACTIVE
-	================================ */
-	$('.counter').counterUp({
-		delay: 50,
-		time: 3000
-	});
 
      /*
      SCROLLUP
