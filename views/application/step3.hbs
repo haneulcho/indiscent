@@ -17,8 +17,8 @@
 					<a href="./step4" class="btn_save">다음단계</a>
 					<div id="indicator">
 						<ul class="inb">
-							<li><a href="./step1">BASE</a></li>
-							<li><a href="./step2">THEME 1</a></li>
+							<li class="done"><a href="./step1">BASE</a></li>
+							<li class="done"><a href="./step2">THEME 1</a></li>
 							<li class="current"><a href="./step3">THEME 2</a></li>
 							<li><a href="./step4">THEME 3</a></li>
 							<li><a href="./step5">INGREDIENTS 1</a></li>
@@ -34,7 +34,7 @@
 					<form action="#" method="post" id="indiForm">
 						<div class="app-grid">
 							{{# each themes }}
-								<div class="grid-item">
+								<div class="grid-item theme">
 									<label for="{{ name }}">
 										<div class="imgs overlay">
 											<img src="{{ imagePath }}" alt="{{ name }}" />
