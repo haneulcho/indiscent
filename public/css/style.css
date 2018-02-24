@@ -80,7 +80,7 @@
  }
  hr.devider,
  hr.line {
-     background: #b6b6b6 none repeat scroll 0 0;
+     background-color:#b6b6b6;
      border: 0 none;
      height: 1px;
      margin: 0 auto;
@@ -1259,12 +1259,14 @@ transition:all ease .3s}
 .app_body .grid-item .imgs:before,
 .app_body .grid-item .imgs img,
 .app_body .grid-item .desc h4,
+.app_body .grid-item .desc hr,
 .app_body .grid-item .desc p {
 -webkit-transition: all 0.3s ease 0s;
 -o-transition: all 0.3s ease 0s;
 transition: all 0.3s ease 0s;
 }
-
+.app_body .grid-item .desc hr {transition-delay:100ms}
+.app_body .grid-item .desc p {transition-delay:50ms}
 
 
 .app_body .grid-item {margin:0;padding:0}
@@ -1276,12 +1278,21 @@ transition: all 0.3s ease 0s;
 .app_body .grid-item label.on .desc,
 .app_body .grid-item label.off .desc,
 .app_body .grid-item:hover .desc {opacity:1}
-.app_body .grid-item .desc h4 {display:table-cell;padding-top:50px;font-size:24px;color:#fff;opacity:0}
+.app_body .grid-item .desc h4 {display:block;width:100%;padding-top:50px;font-size:24px;color:#fff;opacity:0}
 .app_body .grid-item label.off .desc h4 {color:#333;text-decoration:line-through}
 .app_body .grid-item label.on .desc h4,
 .app_body .grid-item label.off .desc h4,
 .app_body .grid-item:hover .desc h4 {padding-top:0;opacity:1}
-.app_body .grid-item .desc p {font-size:16px}
+.app_body .grid-item .desc p {font-size:14px;color:#eee;opacity:0}
+.app_body .grid-item label.off .desc p {color:#333}
+.app_body .grid-item label.on .desc p,
+.app_body .grid-item label.off .desc p,
+.app_body .grid-item:hover .desc p {opacity:1}
+.app_body .grid-item .desc hr {display:block;width:0;margin:18px auto 8px;background-color:#eee;opacity:0}
+.app_body .grid-item label.off .desc hr {background-color:#333}
+.app_body .grid-item label.on .desc hr,
+.app_body .grid-item label.off .desc hr,
+.app_body .grid-item:hover .desc hr {width:35px;opacity:1}
 .app_body .grid-item label {display:block;position:relative;cursor:pointer;margin:0}
 .app_body .grid-item label.off {cursor:default}
 .app_body .grid-item label.on .imgs:before {background:rgba(0, 0, 0, 1);opacity:0.7;border:15px solid #fff}
