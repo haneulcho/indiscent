@@ -9,25 +9,29 @@
 						<p>가장 좋아하는 향은 어떤 것인가요?</p>
 					</div>
 					<!-- //.tit -->
-					<div class="count">
+					<!-- <div class="count">
 						<p>선호 테마 선택</p>
 						<p><span id="cnt">0</span> / 1</p>
-					</div>
+					</div> -->
 					<!-- //.count -->
-					<a href="./step3" class="btn_save">다음단계</a>
+					<a href="./step3" class="btn_save">
+						<p class="count"><span class="cnt">0</span> / 1</p> 다음단계로
+					</a>
+					<!-- //.btn_save, .count -->
 					<div id="indicator">
 						<ul class="inb">
-							<li class="done"><a href="./step1">BASE</a></li>
-							<li class="current"><a href="./step2">THEME 1</a></li>
-							<li><a href="./step3">THEME 2</a></li>
-							<li><a href="./step4">THEME 3</a></li>
-							<li><a href="./step5">INGREDIENTS 1</a></li>
-							<li><a href="./step6">INGREDIENTS 2</a></li>
-							<li><a href="./step7">INFORMATION</a></li>
+							<li class="done"><span>BASE</span></li>
+							<li class="current"><span>THEME 1<span class="aka">Super Like</span></span></li>
+							<li><span>THEME 2<span class="aka">Secondary Like</span></span></li>
+							<li><span>THEME 3<span class="aka">Dislike</span></span></li>
+							<li><span>INGREDIENTS 1<span class="aka">Super Like</span></span></li>
+							<li><span>INGREDIENTS 2<span class="aka">Dislike</span></span></li>
+							<li><span>INFORMATION</span></li>
 						</ul>
 					</div>
 					<!-- //.indicator -->
 					<a href="./step1" class="btn_prev">이전</a>
+					<a href="./step1" class="btn_reset">초기화</a>
 				</div>
 				<!-- //.app_header -->
 				<div class="app_body">
@@ -36,12 +40,11 @@
 							{{# each themes }}
 								<div class="grid-item theme">
 									<label for="{{ name }}">
-										<div class="imgs overlay">
+										<div class="imgs">
 											<img src="{{ imagePath }}" alt="{{ name }}" />
 										</div>
 										<div class="desc">
 											<h4 class="name">{{ name }}</h4>
-											<hr class="line"/>
 										</div>
 									</label>
 									<input id="{{ name }}" class="btn_inputs" type="radio" name="love_theme_first" value="{{ name }}" />
@@ -51,6 +54,12 @@
 					</form>
 				</div>
 				<!-- //.app_body -->
+				<div class="app_footer">
+					<a href="./step3" class="btn_save">
+						<p class="count"><span class="cnt">0</span> / 1</p> 다음단계로
+					</a>
+				</div>
+				<!-- //.app_footer -->
 			</div>
 			<!--//.col-xs-12 -->
 		</div>
@@ -70,6 +79,8 @@ $(document).ready(function () {
 		} else {
 			$('label').removeClass('on');
 			$(this).addClass('on');
+			$(this).next('.btn_inputs').attr('checked', true);
+			checkPass();
 		}
 	});
 
@@ -84,6 +95,32 @@ $(document).ready(function () {
 			saveStep('next');
 		} else {
 			alert('가장 좋아하는 향을 선택해 주세요!');
+		}
+	});
+
+	$('.btn_reset').on('click', function (e) {
+		e.preventDefault();
+		if (localStorage['form_data']) {
+			var isConfirmed = confirm('정말 선택사항을 초기화 하시겠어요?');
+			if (isConfirmed) {
+				localStorage.removeItem('form_data');
+				window.location.href = './step1';
+			}
+		} else {
+			alert('저장된 데이터가 없습니다. 베이스 향을 먼저 선택해 주세요!');
+		}
+	});
+
+	$('.btn_reset').on('click', function (e) {
+		e.preventDefault();
+		if (localStorage['form_data']) {
+			var isConfirmed = confirm('정말 선택사항을 초기화 하시겠어요?');
+			if (isConfirmed) {
+				localStorage.removeItem('form_data');
+				window.location.href = './step1';
+			}
+		} else {
+			alert('저장된 데이터가 없습니다. 베이스 향을 먼저 선택해 주세요!');
 		}
 	});
 
@@ -109,7 +146,7 @@ $(document).ready(function () {
 	loadStep();
 
 	function loadStep () {
-		if(localStorage['form_data'])	{
+		if (localStorage['form_data']) {
 			console.log("Loading form data...");
 			var result = JSON.parse(localStorage['form_data']);
 			console.log(result);
@@ -125,6 +162,7 @@ $(document).ready(function () {
 				var val = result.love_theme_first;
 				$('.btn_inputs[value=' + val + ']').attr('checked', true);
 				$('.btn_inputs[value=' + val + ']').prev('label').addClass('on');
+				checkPass();
 			} else {
 				setTimeout(function () {
 					$('input[type=radio]').attr('checked', false);
@@ -135,6 +173,18 @@ $(document).ready(function () {
 			$(location).attr('href', './step1');
 		}
 		return false;
+	};
+
+	function checkPass () {
+		setTimeout(function () {
+			if ($('.btn_inputs').is(':checked')) {
+				$('.btn_save').addClass('pass');
+				$('.btn_save .cnt').text('1');
+			} else {
+				$('.btn_save').removeClass('pass');
+				$('.btn_save .cnt').text('0');
+			}
+		}, 100);
 	};
 });
 </script>
