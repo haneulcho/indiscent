@@ -1278,7 +1278,7 @@ transition: all 0.3s ease 0s;
 .app_body .grid-item label.on .desc,
 .app_body .grid-item label.off .desc,
 .app_body .grid-item:hover .desc {opacity:1}
-.app_body .grid-item .desc h4 {display:block;width:100%;padding-top:50px;font-size:24px;color:#fff;opacity:0}
+.app_body .grid-item .desc h4 {display:block;width:100%;margin-bottom:0;padding-top:50px;font-size:24px;color:#fff;opacity:0}
 .app_body .grid-item label.off .desc h4 {color:#333;text-decoration:line-through}
 .app_body .grid-item label.on .desc h4,
 .app_body .grid-item label.off .desc h4,
@@ -1288,7 +1288,7 @@ transition: all 0.3s ease 0s;
 .app_body .grid-item label.on .desc p,
 .app_body .grid-item label.off .desc p,
 .app_body .grid-item:hover .desc p {opacity:1}
-.app_body .grid-item .desc hr {display:block;width:0;margin:18px auto 8px;background-color:#eee;opacity:0}
+.app_body .grid-item .desc hr {display:block;width:0;margin:10px auto 8px;background-color:#eee;opacity:0}
 .app_body .grid-item label.off .desc hr {background-color:#333}
 .app_body .grid-item label.on .desc hr,
 .app_body .grid-item label.off .desc hr,
