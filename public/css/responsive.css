@@ -2,9 +2,6 @@
 /* Large Devices, Wide Screens :1200px
 ====================================*/
 @media (min-width: 1200px) and (max-width: 1500px) {
-	.app_body .grid-item:hover .desc {
-	  bottom: 30% !important;
-	}
 }
 
 /* Normal desktop :992px
@@ -20,9 +17,6 @@
 	}
 	.contact-area .contact-form {
 	  width: 465px;
-	}
-	.app_body .grid-item:hover .desc {
-	  bottom: 25%!important;
 	}
 }
 
@@ -51,7 +45,7 @@
 	  background-position: 45% 60%;
 	  background-size: auto 80%;
 	}
-	
+
 	.navbar-header {
 		float: none;
 	}
@@ -64,7 +58,7 @@
 	.navbar-nav {
 		float: none!important;
 	}
-	.navbar-collapse.collapse.in { 
+	.navbar-collapse.collapse.in {
 		display: block!important;
 	}
 	.collapsing {
@@ -102,7 +96,7 @@
 	}
 }
 
-/* Small Mobile :320px. 
+/* Small Mobile :320px.
 ====================================*/
 @media (max-width: 767px) {
 	.container{
@@ -150,9 +144,6 @@
 	.we-are-text > p br,
 	.contact-area .info-text > p br{
 		display: none;
-	}
-	.app_body .grid-item:hover .desc {
-	  bottom: 30% !important;
 	}
 	.footer .social-icon {
 		position:static;
