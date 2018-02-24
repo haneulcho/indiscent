@@ -111,19 +111,6 @@ $(document).ready(function () {
 		}
 	});
 
-	$('.btn_reset').on('click', function (e) {
-		e.preventDefault();
-		if (localStorage['form_data']) {
-			var isConfirmed = confirm('정말 선택사항을 초기화 하시겠어요?');
-			if (isConfirmed) {
-				localStorage.removeItem('form_data');
-				window.location.href = './step1';
-			}
-		} else {
-			alert('저장된 데이터가 없습니다. 베이스 향을 먼저 선택해 주세요!');
-		}
-	});
-
 	function saveStep (type) {
 		console.log("Saving form data...");
 		var oldData = JSON.parse(localStorage.getItem('form_data')) || {},
