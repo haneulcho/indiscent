@@ -34,7 +34,7 @@
 						<div class="app-grid">
 							{{# each ingredients }}
 								<div class="grid-item ingredient">
-									<label for="{{ name }}">
+									<label for="val{{ no }}">
 										<div class="imgs">
 											<img src="{{ imagePath }}" alt="{{ name }}" />
 										</div>
@@ -44,7 +44,7 @@
 											<p class="cate">{{ theme }} 계열</p>
 										</div>
 									</label>
-									<input id="{{ name }}" class="btn_inputs" type="checkbox" name="hate_ingre" value="{{ name }}" />
+									<input id="val{{ no }}" class="btn_inputs" type="checkbox" name="love_ingre" value="v{{ no }}" data-val-name="{{ name }}" />
 								</div>
 							{{/each}}
 						</div>
@@ -71,6 +71,7 @@ $(document).ready(function () {
 	var prevUrl = './step5';
 	var nextUrl = './step7';
 	var checkLimit = 1;
+	var ingreArr = ['Bergamot', 'Tangerines', 'Currant', 'Plums', 'Raspberry', 'Freesia', 'Mimosa', 'Pioney', 'Star Magnolie', 'Tulip', 'Violet Green', 'Marine', 'Leafy Green', 'Phytoncide', 'Sandalwood', 'White Musk'];
 	$('label').on('click', function (e) {
 		if ($(this).hasClass('off')) {
 			e.preventDefault();
@@ -118,7 +119,7 @@ $(document).ready(function () {
 				newData = {},
 				result = {};
 		newData['hate_ingre'] = $('.btn_inputs:checked').map(function () {
-															return $(this).val();
+															return $(this).attr('data-val-name');
 														}).get();
 		result = $.extend({}, oldData, newData);
 
@@ -143,13 +144,21 @@ $(document).ready(function () {
 			console.log(result);
 			if (result.love_ingre) {
 				$.each(result.love_ingre, function (i, val) {
-					$('.btn_inputs[value=' + val + ']').prev('label').addClass('off');
+					$.each(ingreArr, function (j, val2) {
+						if (val == val2) {
+							$('.btn_inputs[value=v' + parseInt(j+1) + ']').prev('label').addClass('off');
+						}
+					});
 				});
 			}
 			if (result.hate_ingre) {
 				$.each(result.hate_ingre, function (i, val) {
-					$('.btn_inputs[value=' + val + ']').attr('checked', true);
-					$('.btn_inputs[value=' + val + ']').prev('label').addClass('on');
+					$.each(ingreArr, function (j, val2) {
+						if (val == val2) {
+							$('.btn_inputs[value=v' + parseInt(j+1) + ']').attr('checked', true);
+							$('.btn_inputs[value=v' + parseInt(j+1) + ']').prev('label').addClass('on');
+						}
+					});
 				});
 				checkPass();
 			} else {
