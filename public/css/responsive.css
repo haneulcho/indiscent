@@ -1,168 +1,88 @@
-
-/* Large Devices, Wide Screens :1200px
-====================================*/
-@media (min-width: 1200px) and (max-width: 1500px) {
-}
-
-/* Normal desktop :992px
-====================================*/
-@media (min-width: 992px) and (max-width: 1200px) {
+@media screen and (min-width:992px) and (max-width:1199px) {
+	.container {width:980px}
+	.app_header .inb li {width:120px}
 	.mainmenu .navigation > li:last-child > ul {
-	  left: inherit;
-	  right: 0;
-	}
-	/* Pages */
-	.sidebar {
-	  padding: 40px 20px;
-	}
-	.contact-area .contact-form {
-	  width: 465px;
+	  left:inherit;
+	  right:0;
 	}
 }
 
-/* Tablet desktop :768px
-===================================*/
-@media (min-width: 768px) and (max-width: 991px) {
-	.plr-40 {
-	  padding-left: 15px;
-	  padding-right: 15px;
-	}
-	.pl-30 {
-	  padding-left: 15px;
-	}
-	.ptb-275 {
-	  padding-bottom: 175px;
-	  padding-top: 175px;
-	}
-	.col-xs-12.no-padding{
-		padding: 0 15px;
-	}
-	.tablet-mb-50{
-		margin-bottom: 50px;
-	}
-	.slider-bg-3 {
-	  background-color: #24201d;
-	  background-position: 45% 60%;
-	  background-size: auto 80%;
-	}
-
-	.navbar-header {
-		float: none;
-	}
-	.navbar-toggle {
-		display: block;
-	}
-	.navbar-collapse.collapse {
-		display: none!important;
-	}
-	.navbar-nav {
-		float: none!important;
-	}
-	.navbar-collapse.collapse.in {
-		display: block!important;
-	}
-	.collapsing {
-		overflow: hidden!important;
-	}
-	.navbar-toggle {
-	  top: -2px;
-	  z-index: 9999;
-	}
-	.header-top .navbar-collapse {
-	  right: 15px;
-	}
-    .mainmenu .navbar-collapse {
-	  top: 70px;
-	}
-    .is-sticky .mainmenu .navbar-collapse {
-	  top: 57px;
-	}
-	/* Pages */
-	.sidebar {
-	  padding: 30px 15px;
-	}
-	.blog-four .medium-post .blog-text {
-	  padding: 40px 30px;
-	}
-	.contact-area .pull-left ,
-	.contact-area .pull-right  {
-	  float: none!important;
-	}
-	.app_body .grid-item{
-	  width: 50%;
-	}
-	.app_body .grid-item:hover .desc {
-	  bottom: 32% !important;
-	}
+@media screen and (max-width:991px) {
+	.container {width:auto}
+	.app_header .indicator {padding:0}
 }
 
-/* Small Mobile :320px.
-====================================*/
-@media (max-width: 767px) {
-	.container{
-		width:300px;
-	}
-	.mobile-mb-30{
-		margin-bottom: 30px;
-	}
-    .section-padding {
-        padding: 80px 0;
-    }
-	.contact-area .contact-form,
-	  .grid-item,
-    .percent-25,
-    .percent-33,
-    .percent-50 {
-        width: 100%;
-    }
-	.col-xs-12.no-padding{
-		padding: 0 15px;
-	}
-	footer .pull-left,
-	footer .pull-right {
-	  float: none!important;
-	  text-align: center;
-	}
-	footer .left p{
-		margin-bottom: 10px;
-	}
-	.testimonial-item {
-	  padding: 0;
-	}
-	.client-say .text {
-	  padding: 30px 15px;
-	  position: relative;
-	}
-	.sidebar {
-	  padding: 40px 20px;
-	}
-	.contact-area .pull-left ,
-	.contact-area .pull-right ,
-	.single-comment p.pull-right {
-	  float: none!important;
-	}
-	.we-are-text > p br,
-	.contact-area .info-text > p br{
-		display: none;
-	}
-	.footer .social-icon {
-		position:static;
-		padding:15px 0 0 0;
-		clear:both
-	}
+@media screen and (min-width:768px) and (max-width:991px) {
+	.container {padding-left:25px;padding-right:25px}
+	.app_header .inb li {width:100px}
+	.app_header .inb li > span {font-size:13px}
+	.app_header .inb li > span .aka {font-size:11px}
 }
 
-/* Large Mobile :480px
-=====================================*/
-@media only screen and (min-width: 480px) and (max-width: 767px) {
-	.container {width:480px}
-	.percent-66,
-	.percent-33{
-	  width: 50%;
-	}
-	.slider-bg-3 {
-	  background-color: #24201d;
-	  background-position: 40% 60%;
-	  background-size: auto 70%;
-	}
+@media screen and (max-width:767px) {
+	.container {padding-left:15px;padding-right:15px}
+	.main-area {padding:50px 0}
+	.header .header-top .logo {width:100px}
+	.header .header-top .logo,
+	.mainmenu li a {line-height:60px}
+	.header-space {height:60px}
+	.header .header-top.is-sticky {padding-top:5px;padding-bottom:5px}
+	.mainmenu {width:100%}
+	.mainmenu .navbar-toggle {position:absolute;display:block;top:-54px;right:0;border:1px solid #777;z-index:9999}
+	.mainmenu .navbar-collapse {position:absolute;top:0;right:0;width:100%;height:0;padding-left:15px;padding-right:15px;background-color:#fff;-webkit-box-shadow:0 1px 4px rgba(2, 3, 3, 0.1);box-shadow:0 1px 4px rgba(2, 3, 3, 0.1)}
+	.mainmenu .navbar-collapse.in {height:auto}
+	.mainmenu .navbar-collapse > .navigation > li ul {position:relative;display:none;top:auto !important;left:auto !important;right:auto !important;width:100%;opacity:1;visibility:visible;
+		-webkit-transition:none 0s ease 0s !important;
+		-o-transition:none 0s ease 0s !important;
+		transition:none 0s ease 0s !important}
+	.mainmenu .navigation {position:relative;z-index:999}
+	.mainmenu .navigation li {float:none;margin:0}
+	.mainmenu .navigation > li {border-bottom:1px solid #dfdfdf}
+	.mainmenu .navigation > li:last-child {border-bottom:none}
+	.mainmenu .navigation > li > a {line-height:45px;padding-left:10px}
+	.mainmenu li a:after {display:none}
+	.is-sticky .mainmenu .navbar-collapse {top:6px}
+	.pages-header .title-item {height:300px}
+	.pages-header .title-item .page-title-wrap {height:300px;padding:0}
+	.pages-header .title-item .page-title {position:absolute !important;top:118px !important;left:0 !important;right:0;width:280px !important;margin:auto !important;padding:10px 30px !important}
+	.pages-header .title-item.it2 .page-title {top:40px !important}
+	.pages-header .title-item .page-title h1 {margin:0 0 10px 0;font-size:22px}
+	.pages-header .title-item .page-title h4 {font-size:14.5px}
+	.main-area .section-cont {padding:0 10px}
+	.main-area .section-cont h2 {margin:0 0 5px 0;font-size:18px}
+	.main-area .section-cont h3 {font-size:14px}
+	.main-area .section-cont p {font-size:13px;line-height:1.4}
+	.main-area .section-cont .btn_application {width:240px;margin:30px auto}
+	.about {padding:0 10px}
+	.about_box > h2 {float:none;margin:0 0 10px 0;font-size:17px;text-align:left}
+	.about_box .des {margin-left:0}
+	.about_box .des h3 {margin-bottom:12px;font-size:18px}
+	.about_box .des p {font-size:13px;line-height:20px}
+	.app_header + .app_body {padding-top:10px}
+	.app_header .tit {margin-bottom:30px}
+	.app_header .tit:after {margin-top:20px}
+	.app_header .tit h1 {font-size:24px;margin:0 0 5px 0}
+	.app_header .tit p {font-size:14px}
+	.app_header .indicator {display:none}
+	.btn_prev, .btn_reset {font-size:16px}
+	.btn_reset {float:right;padding-right:0}
+	.footer .footer_widget {float:none;width:100%}
+}
+
+@media screen and (max-width:479px) {
+	.app_body .grid-item label.on .imgs:before {border-width:12px}
+	.app_body .grid-item .desc h4 {font-size:18px}
+	.app_body .grid-item .desc p {font-size:13px}
+}
+
+@media screen and (max-width:359px) {
+	.app_body .grid-item, .app_body .grid-item.percent-50 {width:100%}
+	.app_body .ipts {width:270px}
+	.btn_confirm {width:270px;height:55px;line-height:55px}
+	.footer .container {padding-bottom:20px}
+	.footer .footer-title {padding-top:20px;font-size:16px}
+	.footer .footer-title + p {font-size:12px}
+}
+@media screen and (min-width:360px) and (max-width:767px) {
+	.app_body .grid-item {width:50%}
 }

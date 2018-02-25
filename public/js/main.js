@@ -69,18 +69,11 @@
      /*
      SLICK CAROUSEL AS NAV
      ===================================*/
-     var OneITem = $('.one-item');
      var TesITem = $('.title-slick-item');
-     OneITem.slick({
-         dots: false,
-         arrows: true,
-         prevArrow: '<i class="prev zmdi zmdi-chevron-left"></i>',
-         nextArrow: '<i class="next zmdi zmdi-chevron-right"></i>'
-     });
 	TesITem.slick({
 		 dots: false,
 		 arrows: false,
-		 autoplay: true,
+		 autoplay: false,
 		 autoplaySpeed: 4000
 	});
 

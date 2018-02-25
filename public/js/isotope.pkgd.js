@@ -902,9 +902,9 @@ proto.getPosition = function() {
   // convert percent to pixels
   var layoutSize = this.layout.size;
   var x = xValue.indexOf('%') != -1 ?
-    ( parseFloat( xValue ) / 100 ) * layoutSize.width : parseInt( xValue, 10 );
+    ( parseFloat( xValue ) / 100 ) * layoutSize.width : parseFloat( xValue, 10 );
   var y = yValue.indexOf('%') != -1 ?
-    ( parseFloat( yValue ) / 100 ) * layoutSize.height : parseInt( yValue, 10 );
+    ( parseFloat( yValue ) / 100 ) * layoutSize.height : parseFloat( yValue, 10 );
 
   // clean up 'auto' or other non-integer values
   x = isNaN( x ) ? 0 : x;
@@ -968,8 +968,8 @@ proto._transitionTo = function( x, y ) {
   var curX = this.position.x;
   var curY = this.position.y;
 
-  var compareX = parseInt( x, 10 );
-  var compareY = parseInt( y, 10 );
+  var compareX = parseFloat( x, 10 );
+  var compareY = parseFloat( y, 10 );
   var didNotMove = compareX === this.position.x && compareY === this.position.y;
 
   // save end position
@@ -1013,8 +1013,8 @@ proto.goTo = function( x, y ) {
 proto.moveTo = proto._transitionTo;
 
 proto.setPosition = function( x, y ) {
-  this.position.x = parseInt( x, 10 );
-  this.position.y = parseInt( y, 10 );
+  this.position.x = parseFloat( x, 10 );
+  this.position.y = parseFloat( y, 10 );
 };
 
 // ----- transition ----- //
@@ -3243,7 +3243,7 @@ var trim = String.prototype.trim ?
     // `.foo-bar` will use the text of .foo-bar querySelector
     // `[foo-bar]` will use attribute
     // you can also add parser
-    // `.foo-bar parseInt` will parse that as a number
+    // `.foo-bar parseFloat` will parse that as a number
     function mungeSorter( sorter ) {
       // if not a string, return function or whatever it is
       if ( typeof sorter != 'string' ) {
@@ -3291,8 +3291,8 @@ var trim = String.prototype.trim ?
 
   // parsers used in getSortData shortcut strings
   Isotope.sortDataParsers = {
-    'parseInt': function( val ) {
-      return parseInt( val, 10 );
+    'parseFloat': function( val ) {
+      return parseFloat( val, 10 );
     },
     'parseFloat': function( val ) {
       return parseFloat( val );

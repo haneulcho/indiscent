@@ -1,5 +1,5 @@
 <!-- Body Contents Start -->
-<div class="main-area section-padding">
+<div class="main-area">
 	<div class="container">
 		<div class="row text-center">
 			<div class="col-xs-12">
@@ -11,7 +11,7 @@
 						</div>
 						<!-- //.tit -->
 					</div>
-					<div id="indicator">
+					<div class="indicator">
 						<ul class="inb">
 							<li class="done"><span>BASE</span></li>
 							<li class="done"><span>THEME 1<span class="aka">Super Like</span></span></li>
@@ -67,7 +67,7 @@
 							</div>
 						</div>
 						<!--//#cont -->
-						<div id="cont_emb" class="btn_save">신청하기</div>
+						<a href="#" id="cont_emb" class="btn_confirm">신청하기</a>
 					</form>
 				</div>
 				<!-- //.app_body -->
@@ -98,7 +98,8 @@ $(document).ready(function () {
 	  }
 	});
 
-	$('.btn_save').on('click', function (e) {
+	$('.btn_confirm').on('click', function (e) {
+		e.preventDefault();
 		$('#indiForm').submit();
 	});
 
@@ -124,7 +125,7 @@ $(document).ready(function () {
 	$('#indiForm').validate({
 		focusInvalid: false,
 		onclick: false,
-		onfocusout: false,
+		onfocusout: true,
 		onkeyup: false,
 		rules: {
 			name: { required: true, minlength: 2},
@@ -189,7 +190,7 @@ $(document).ready(function () {
 						var str = '';
 						str += '<div class="section-title">';
 						str += '	<h2>신청이 완료되었습니다.</h2>';
-						str += '	<div class="horizontal-line ptb-20"><div></div></div><h5>빠른 시간내로 연락드리겠습니다.<br><br>3초 후 메인으로 이동합니다.</h5>';
+						str += '	<div class="horizontal-line"><div></div></div><h5>빠른 시간내로 연락드리겠습니다.<br><br>3초 후 메인으로 이동합니다.</h5>';
 						str += '</div>';
 
 						$('#cont_em, #cont_emb').remove();
