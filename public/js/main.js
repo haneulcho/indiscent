@@ -73,7 +73,7 @@
 	TesITem.slick({
 		 dots: false,
 		 arrows: false,
-		 autoplay: false,
+		 autoplay: true,
 		 autoplaySpeed: 4000
 	});
 
