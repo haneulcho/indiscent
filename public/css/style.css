@@ -1,5 +1,5 @@
 body {font-family:'Open Sans', sans-serif;font-size:14px;font-weight:400;color:#666;background-color:#fff;overflow-x:hidden;-webkit-text-size-adjust:100%;-webkit-overflow-scrolling:touch;-webkit-font-smoothing:antialiased}
-html, body {width:100%}
+html, body {width:100%;overflow-x:hidden}
 ::-moz-selection {background:#ccc;text-shadow:none;color:#000}
 ::selection {background:#ccc;text-shadow:none;color:#000}
 .browserupgrade {margin:0.2em 0;padding:0.2em 0;background:#ccc;color:#000}
