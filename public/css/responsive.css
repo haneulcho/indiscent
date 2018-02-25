@@ -73,15 +73,15 @@
 	.app_body .grid-item label.on .imgs:before {border-width:12px}
 	.app_body .grid-item .desc h4 {font-size:18px}
 	.app_body .grid-item .desc p {font-size:13px}
+	.footer .container {padding-bottom:20px}
+	.footer .footer-title {padding-top:20px;font-size:16px}
+	.footer .footer-title + p {font-size:12px}
 }
 
 @media screen and (max-width:359px) {
 	.app_body .grid-item, .app_body .grid-item.percent-50 {width:100%}
 	.app_body .ipts {width:270px}
 	.btn_confirm {width:270px;height:55px;line-height:55px}
-	.footer .container {padding-bottom:20px}
-	.footer .footer-title {padding-top:20px;font-size:16px}
-	.footer .footer-title + p {font-size:12px}
 }
 @media screen and (min-width:360px) and (max-width:767px) {
 	.app_body .grid-item {width:50%}
