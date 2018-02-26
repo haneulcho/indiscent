@@ -105,10 +105,10 @@ $(document).ready(function () {
 
 	$('.btn_reset').on('click', function (e) {
 		e.preventDefault();
-		if (localStorage['form_data']) {
+		if (sessionStorage['form_data']) {
 			var isConfirmed = confirm('정말 선택사항을 초기화 하시겠어요?');
 			if (isConfirmed) {
-				localStorage.removeItem('form_data');
+				sessionStorage.removeItem('form_data');
 				window.location.href = './step1';
 			}
 		} else {
@@ -167,7 +167,7 @@ $(document).ready(function () {
 	function saveStep(indiForm) {
 		if (!isPass) {
 			isPass = true;
-			var oldData = JSON.parse(localStorage.getItem('form_data')) || {},
+			var oldData = JSON.parse(sessionStorage.getItem('form_data')) || {},
 					newData = {
 						name: $('#ipt_name').val(),
 						hp: $('#ipt_hp').val(),
@@ -176,7 +176,7 @@ $(document).ready(function () {
 					resultData = {};
 			resultData = $.extend({}, oldData, newData);
 
-			localStorage.setItem('form_data', JSON.stringify(resultData));
+			sessionStorage.setItem('form_data', JSON.stringify(resultData));
 
 			$.ajax({
 				url: './complete',
@@ -198,7 +198,7 @@ $(document).ready(function () {
 
 						setTimeout(function () {
 							$(location).attr('href', '/');
-							localStorage.clear();
+							sessionStorage.clear();
 						}, 3000);
 					} else {
 						alert('에러가 발생했습니다.\n잠시 후 다시 시도해 주세요.');
@@ -221,9 +221,9 @@ $(document).ready(function () {
 	loadStep();
 
 	function loadStep () {
-		if (localStorage['form_data']) {
+		if (sessionStorage['form_data']) {
 			console.log("Loading form data...");
-			var result = JSON.parse(localStorage['form_data']);
+			var result = JSON.parse(sessionStorage['form_data']);
 			console.log(result);
 		} else {
 			alert('베이스 향을 먼저 선택해 주세요!');

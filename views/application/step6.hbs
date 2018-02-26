@@ -104,10 +104,10 @@ $(document).ready(function () {
 
 	$('.btn_reset').on('click', function (e) {
 		e.preventDefault();
-		if (localStorage['form_data']) {
+		if (sessionStorage['form_data']) {
 			var isConfirmed = confirm('정말 선택사항을 초기화 하시겠어요?');
 			if (isConfirmed) {
-				localStorage.removeItem('form_data');
+				sessionStorage.removeItem('form_data');
 				window.location.href = './step1';
 			}
 		} else {
@@ -117,7 +117,7 @@ $(document).ready(function () {
 
 	function saveStep (type) {
 		console.log("Saving form data...");
-		var oldData = JSON.parse(localStorage.getItem('form_data')) || {},
+		var oldData = JSON.parse(sessionStorage.getItem('form_data')) || {},
 				newData = {},
 				result = {};
 		newData['hate_ingre'] = $('.btn_inputs:checked').map(function () {
@@ -126,7 +126,7 @@ $(document).ready(function () {
 		result = $.extend({}, oldData, newData);
 
 		console.log(result);
-		localStorage.setItem('form_data', JSON.stringify(result));
+		sessionStorage.setItem('form_data', JSON.stringify(result));
 
 		setTimeout(function () {
 			if (type == 'next') {
@@ -140,9 +140,9 @@ $(document).ready(function () {
 	loadStep();
 
 	function loadStep () {
-		if (localStorage['form_data']) {
+		if (sessionStorage['form_data']) {
 			console.log("Loading form data...");
-			var result = JSON.parse(localStorage['form_data']);
+			var result = JSON.parse(sessionStorage['form_data']);
 			console.log(result);
 			if (result.love_ingre) {
 				$.each(result.love_ingre, function (i, val) {
