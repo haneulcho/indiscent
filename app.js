@@ -20,10 +20,9 @@ require('./lib/connection');
 // view engine setup
 
 // 하늘 추가
-app.engine('.hbs', expressHbs({ defaultLayout: 'default', extname: '.hbs' }));
-app.set('view engine', '.hbs');
-
-// app.set('views', path.join(__dirname, 'views'));
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'hbs');
+app.engine('.hbs', expressHbs({ defaultLayout: __dirname + '/views/layouts/default', partialsDir: __dirname + '/views/partials', extname: '.hbs' }));
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
