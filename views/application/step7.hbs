@@ -125,7 +125,6 @@ $(document).ready(function () {
 	$('#indiForm').validate({
 		focusInvalid: false,
 		onclick: false,
-		onfocusout: true,
 		onkeyup: false,
 		rules: {
 			name: { required: true, minlength: 2},
@@ -145,6 +144,9 @@ $(document).ready(function () {
 			address: {
 				required: "지역을 선택하세요."
 			}
+		},
+		onfocusout: function(element, event) {
+			$(element).valid();
 		},
 		errorPlacement: function () {
 		},
