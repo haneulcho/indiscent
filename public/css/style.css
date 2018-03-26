@@ -169,6 +169,8 @@ transition:all 0.3s ease 0s}
 -webkit-transition:all 0.3s ease;
 -o-transition:all 0.3s ease;
 transition:all 0.3s ease}
+.app_header .current_step {position:relative;font-size:15px;font-weight:400;margin-bottom:10px}
+.app_header .current_step > strong {color:#00aba3}
 .app_body {padding:30px 0;background-color:#f6f6f6}
 .app_body:before, .app_body:after {content:'';display:table;clear:both}
 .app_header + .app_body {padding-top:15px}
