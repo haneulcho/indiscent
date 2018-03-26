@@ -23,8 +23,10 @@ Thumbs.db
 *.rar
 *.tar
 *.zip
+package-lock.json
 
 # Ignore Configuration, Font Files #
 */config.js
+*/**/config.js
 public/fonts
 public/fonts/*

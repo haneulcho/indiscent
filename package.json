@@ -1,0 +1,31 @@
+{
+  "name": "indiscent-app-api",
+  "version": "1.0.0",
+  "description": "Indiscent Beta API",
+  "main": "server.js",
+  "scripts": {
+    "start": "set NODE_ENV=production&&node ./server",
+    "dev": "set NODE_ENV=development&&node ./server",
+    "seed-theme": "set NODE_ENV=production&&node ./api/seed/theme-seeder",
+    "seed-ingredient": "set NODE_ENV=production&&node ./api/seed/ingredient-seeder",
+    "seed-theme-dev": "set NODE_ENV=development&&node ./api/seed/theme-seeder",
+    "seed-ingredient-dev": "set NODE_ENV=development&&node ./api/seed/ingredient-seeder",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Indiscent",
+    "Express",
+    "RestAPI",
+    "MongoDB",
+    "Mongoose"
+  ],
+  "author": "Haneul Cho",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.3",
+    "extend": "^3.0.1",
+    "mongoose": "^5.0.10",
+    "mongoose-auto-increment": "^5.0.1"
+  }
+}
