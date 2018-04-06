@@ -7,12 +7,14 @@ var connection = mongoose.createConnection(config.mongoDB.dbUrl);
 autoIncrement.initialize(connection);
 
 var OrderSchema = new Schema({
+	username: { type: Schema.Types.ObjectId, ref: 'User', required: false },
 	name: { type: String, required: true },
 	created_at: { type: Date, default: Date.now() },
+	edited_at: { type: Date, default: Date.now() }, 
 	gender: { type: String, required: false },
 	hp: { type: String, required: true },
 	address: { type: String },
-	isEarlyBird: { type: Boolean, required: false, default: false },
+	isEarlyBird: { type: Boolean, required: false, default: true },
 	base: { type: String, required: true },
 	love_theme: {
 		first: { type: String, required: true },

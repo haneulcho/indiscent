@@ -16,8 +16,7 @@ var UserSchema = new Schema({
 		lines: { type: [String] },
 		city: { type: String },
 		state: { type: String }
-	},
-	isEarlyBird: { type: Boolean, required: true, default: false }
+	}
 });
 
 UserSchema.plugin(autoIncrement.plugin, { model: 'User', field: 'id', startAt: 1 });

@@ -10,6 +10,7 @@
     "seed-ingredient": "set NODE_ENV=production&&node ./api/seed/ingredient-seeder",
     "seed-theme-dev": "set NODE_ENV=development&&node ./api/seed/theme-seeder",
     "seed-ingredient-dev": "set NODE_ENV=development&&node ./api/seed/ingredient-seeder",
+    "seed-order-dev": "set NODE_ENV=development&&node ./api/seed/order-seeder",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
@@ -26,6 +27,8 @@
     "express": "^4.16.3",
     "extend": "^3.0.1",
     "mongoose": "^5.0.10",
-    "mongoose-auto-increment": "^5.0.1"
+    "mongoose-auto-increment": "^5.0.1",
+    "nodemailer": "^4.6.4",
+    "nodemailer-smtp-transport": "^2.7.4"
   }
 }

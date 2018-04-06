@@ -1,15 +1,9 @@
 var Ingredient = require('../models/ingredient');
 var mongoose = require('mongoose');
 var config = (process.env.NODE_ENV == 'production') ? require('../config/config') : require('../config/config.dev');
-require(process.cwd() + '/lib/connection');
+require(process.cwd() + '/api/lib/connection');
 
 var defaultImgPath = config.web.url + '/imgs/ingredients/';
-
-if (process.env.NODE_ENV == 'production') {
-	console.log('프로덕션 모드 접속 완료!');
-} else {
-	console.log('개발 모드 접속 완료!');
-}
 
 var ingredients = [
 	new Ingredient({
