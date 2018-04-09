@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "start": "set NODE_ENV=production&&node ./server",
-    "dev": "set NODE_ENV=development&&node ./server",
+    "dev": "set NODE_ENV=development&&nodemon ./server.js",
     "seed-theme": "set NODE_ENV=production&&node ./api/seed/theme-seeder",
     "seed-ingredient": "set NODE_ENV=production&&node ./api/seed/ingredient-seeder",
     "seed-theme-dev": "set NODE_ENV=development&&node ./api/seed/theme-seeder",
@@ -30,5 +30,8 @@
     "mongoose-auto-increment": "^5.0.1",
     "nodemailer": "^4.6.4",
     "nodemailer-smtp-transport": "^2.7.4"
+  },
+  "devDependencies": {
+    "nodemon": "^1.17.3"
   }
 }
