@@ -10,8 +10,8 @@ var BoardSchema = new Schema({
 	subject: { type: String, required: true },
 	name: { type: String, required: true },
 	email: { type: String, required: false },
-	contents: { type: String, required: true }
-});
+	content: { type: String, required: true },
+}, { timestamps: { createdAt: 'created_at', updatedAt: 'updated_at' } });
 
 BoardSchema.plugin(autoIncrement.plugin, { model: 'Board', field: 'id', startAt: 1 });
 var Board = connection.model('Board', BoardSchema);

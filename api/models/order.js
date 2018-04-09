@@ -9,8 +9,6 @@ autoIncrement.initialize(connection);
 var OrderSchema = new Schema({
 	username: { type: Schema.Types.ObjectId, ref: 'User', required: false },
 	name: { type: String, required: true },
-	created_at: { type: Date, default: Date.now() },
-	edited_at: { type: Date, default: Date.now() }, 
 	gender: { type: String, required: false },
 	hp: { type: String, required: true },
 	address: { type: String },
@@ -24,7 +22,7 @@ var OrderSchema = new Schema({
 	love_ingre: { type: [String], required: true },
 	hate_ingre: { type: [String], required: false },
 	comment: { type: String }
-});
+}, { timestamps: { createdAt: 'created_at', updatedAt: 'updated_at' } });
 
 OrderSchema.plugin(autoIncrement.plugin, { model: 'Order', field: 'id', startAt: 1 });
 var Order = connection.model('Order', OrderSchema);
