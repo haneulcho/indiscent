@@ -6,6 +6,6 @@ router.get('/theme', applications.findAllTheme);
 router.get('/theme/:theme_id', applications.findByIdTheme);
 router.get('/ingredient', applications.findAllIngredient);
 router.get('/ingredient/:ingredient_id', applications.findByIdIngredient);
-router.get('/complete', applications.complete);
+router.post('/complete', applications.complete);
 
 module.exports = router;
