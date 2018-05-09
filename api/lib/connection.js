@@ -2,6 +2,8 @@ var config = (process.env.NODE_ENV == 'production') ? require('../config/config'
 var mongoose = require('mongoose');
 var db = mongoose.connection;
 
+mongoose.Promise = global.Promise;
+
 db.on('error', function () {
 	console.log('통신 오류가 발생했습니다!');
 });
